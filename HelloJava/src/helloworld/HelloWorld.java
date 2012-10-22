@@ -1,7 +1,7 @@
 package helloworld;
 
 import java.lang.System;
-import java.lang.*;
+//import java.lang.*;
 
 public class HelloWorld {
 
