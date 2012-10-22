@@ -10,7 +10,7 @@ public class HelloWorld {
 		System.out.println("Satvik Maams !");
 		for (int i = 0 ; i<10 ; i++)
 		{
-			System.out.println(""+i);
+			System.out.println("Samir Maama "+i);
 		}
 		
 	}
