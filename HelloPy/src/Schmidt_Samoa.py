@@ -24,9 +24,11 @@ def gcd(a,b):
     return gcd(b, a%b)
 def extended_euclids_algo(a, b):
     if b==0:
+        print (a,1,0)
         return (a,1,0)
     dxy_1 = extended_euclids_algo(b, a%b);
     dxy = (dxy_1[0],dxy_1[2],dxy_1[1]-((int(a/b)*dxy_1[2])))
+    print dxy
     return dxy
 def Modular_Eqn_Solver(a,b,n):
     soln = extended_euclids_algo(a, n);
@@ -34,7 +36,7 @@ def Modular_Eqn_Solver(a,b,n):
     x1 = soln[1]
     y1 = soln[2]
     
-    if d%b == 0:
+    if b%d == 0:
         return x1*(b/d)%n
     else:
         print 'No solution exits'
@@ -44,6 +46,7 @@ def encrypt(m, e, n):
     return (m**e) % n
 
 def decrypt(c, d, n):
+    print c**d
     return (c**d) % n
 
 def lcm(a,b):
@@ -52,10 +55,10 @@ p = 13
 q = 17
 
 N = p**2 * q
-
+print 'Public key is ',N
 d = Modular_Eqn_Solver(N, 1, lcm(p-1, q-1))
-
-m = 100
+print 'Private Key = ',d
+m = 10
 c = encrypt(m, N, N)
 print 'Cipher Text is ' + str(c)
 mes = decrypt(c, d, p*q)
