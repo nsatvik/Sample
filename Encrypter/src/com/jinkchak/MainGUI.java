@@ -1,6 +1,8 @@
 package com.jinkchak;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -23,8 +25,13 @@ public class MainGUI {
 	private Button EncDecryptCheck;
 	private Label msgLabel;
 	private Label cipherLabel;
+	
+	private Schmidt_Samoa_Encryptor encryptor;
+	
 	public MainGUI(Display display)
 	{
+		encryptor = new Schmidt_Samoa_Encryptor();
+		
 		shell = new Shell(display);
 		initUI();
 		// shell.pack();
@@ -45,38 +52,48 @@ public class MainGUI {
 		EncryptButton.addListener(SWT.MouseDown, new Listener() {
 			
 			@Override
-			public void handleEvent(Event event) {
-				DecryptionTextBox.setText(EncryptionTextBox.getText()+"!");
-				
-			}
-		});
-		
-		EncDecryptCheck.addListener(SWT.CHECK, new Listener() {
-			
-			@Override
-			public void handleEvent(Event event) {
-				DecryptionTextBox.setText(EncryptionTextBox.getText()+" Clicked!");
-				if (EncDecryptCheck.isEnabled())
+			public void handleEvent(Event event) 
+			{
+				if(EncryptButton.getText().equals("Encrypt"))
 				{
-					msgLabel.setText("Cipher: ");
-					cipherLabel.setText("Message: ");
-					EncryptButton.setText("Decrypt");
+					String cipher = encryptor.encrypt(EncryptionTextBox.getText());								
+					DecryptionTextBox.setText(cipher);
 				}
 				else
 				{
-					msgLabel.setText("Message: ");
-					cipherLabel.setText("Cipher: ");
-					EncryptButton.setText("Encrypt");
+					String plain = encryptor.decrypt(EncryptionTextBox.getText());
+					DecryptionTextBox.setText(plain);
 				}
-				
 			}
 		});
 		
+		
+		EncDecryptCheck.addSelectionListener(new SelectionAdapter() {
+			
+            @Override
+            public void widgetSelected(SelectionEvent e) 
+            {
+                if (EncDecryptCheck.getSelection()) 
+                {
+                	msgLabel.setText("Cipher: ");
+					cipherLabel.setText("Message: ");
+					EncryptButton.setText("Decrypt");
+                } 
+                else 
+                {
+                	msgLabel.setText("Message: ");
+					cipherLabel.setText("Cipher: ");
+					EncryptButton.setText("Encrypt");
+                }
+            }
+        });		
 	}
-	public void initUI() {
+	
+	public void initUI() 
+	{
         FormLayout layout = new FormLayout();
         shell.setLayout(layout);
-        EncryptionTextBox = new Text(shell, SWT.SINGLE | SWT.BORDER);
+        EncryptionTextBox = new Text(shell, SWT.MULTI | SWT.BORDER);
         FormData EncTextBoxData = new FormData(100, 100);
         EncTextBoxData.left = new FormAttachment(25);
         EncTextBoxData.right = new FormAttachment(75);
@@ -84,7 +101,7 @@ public class MainGUI {
         EncTextBoxData.bottom = new FormAttachment(40);
         EncryptionTextBox.setLayoutData(EncTextBoxData);
         
-		DecryptionTextBox = new Text(shell, SWT.SINGLE | SWT.BORDER);
+		DecryptionTextBox = new Text(shell, SWT.MULTI | SWT.BORDER);
 		 FormData DecTextBoxData = new FormData(100, 100);
 		 DecTextBoxData.left = new FormAttachment(25);
 		 DecTextBoxData.right = new FormAttachment(75);

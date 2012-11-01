@@ -2,6 +2,8 @@ package com.jinkchak;
 
 import java.security.InvalidAlgorithmParameterException;
 
+import org.eclipse.swt.widgets.Display;
+
 /**
 Schmidt-Samoa Cryptosystem
 Key generation
@@ -19,6 +21,8 @@ public class Schmidt_Samoa_Encryptor {
 	private int p, q;
 	private int public_key, private_key;
 	
+	private static final int BLOCK_SIZE = 6;			//For splitting a String of text into blocks
+	
 	/*
 	 * This constructor initializes p,q and other variables.
 	 */
@@ -26,39 +30,36 @@ public class Schmidt_Samoa_Encryptor {
 	{
 		p = 13;
 		q = 17; // Can use a pool of primes and use a random number generator to select these from the poll.
-		public_key = ComputeN();
+		public_key = computeN();
 		try {
-			private_key = Modular_Equation_Solver(public_key, 1, Lcm(p-1, q-1));
+			private_key = modular_Equation_Solver(public_key, 1, lcm(p-1, q-1));
 		} catch (InvalidAlgorithmParameterException e) {
 			e.printStackTrace();
-		}
-		
-		
-		
+		}		
 	}
 	
 	/*
 	 * Compute and return the value of N = p^2 * q.
 	 */
-	private int ComputeN()
+	private int computeN()
 	{
 		return p*p*q;
 	}
 	/*
 	 * Compute the lcm of a and b
 	 */
-	private int Lcm(int a, int b)
+	private int lcm(int a, int b)
 	{
-		return (a*b)/Gcd(a,b);
+		return (a*b)/gcd(a,b);
 	}
 	
 	/*
 	 * Compute the gcd of a and b.
 	 */
-	private int Gcd(int a, int b) {
+	private int gcd(int a, int b) {
 		if (b==0)
 			return a;
-		return Gcd(b,a%b);
+		return gcd(b,a%b);
 	}
 	
 	/*
@@ -72,36 +73,36 @@ public class Schmidt_Samoa_Encryptor {
 			result[0] = a;// index 0 is x
 			result[1] = 1;// index 1 is y
 			result[2] = 0;// index 2 is d ... ax+by = d
-			System.out.println(result[0]+" "+result[1]+" "+result[2]);
+			//System.out.println(result[0]+" "+result[1]+" "+result[2]);
 			return result;
 		}
 		
 		int []result_temp = extendedEuclidsAlgo(b, a%b);
 		int []final_result = {result_temp[0],result_temp[2],result_temp[1]-(a/b)*result_temp[2]};
-		System.out.println(final_result[0]+" "+final_result[1]+" "+final_result[2]);
+		//System.out.println(final_result[0]+" "+final_result[1]+" "+final_result[2]);
 		return final_result;
 	}
 	
 	/*
 	 * Modular Equation solver.
 	 */
-	private int Modular_Equation_Solver(int a, int b, int n) throws InvalidAlgorithmParameterException
-	{
+	private int modular_Equation_Solver(int a, int b, int n) throws InvalidAlgorithmParameterException
+	{		
 		int []solution = extendedEuclidsAlgo(a, n);
 		int d = solution[0];
 		int x1 = solution[1];
 		int y1 = solution[2];
 		
 		if(b%d == 0)
-			{
-				int value = x1*b/d;
-				return CorrectValue(value, n);
-			}
+		{
+			int value = x1*b/d;
+			return correctValue(value, n);
+		}
 		else
 			throw new InvalidAlgorithmParameterException();
 	}
 	
-	private int CorrectValue(int value, int n) {
+	private int correctValue(int value, int n) {
 		while(value<0)
 		{
 			
@@ -110,54 +111,115 @@ public class Schmidt_Samoa_Encryptor {
 		System.out.println(value);
 		return value%n;
 	}
-
-	/*
-	 * Encrypts the message.
-	 */
-	public int[] encrypt(int [] message)
+	
+	
+	public int modularExponentiator(int a, int b, int n)
 	{
-		int []cipher = new int[message.length];
-		for(int i=0;i<message.length;++i)
-			cipher[i] = encrypt(message[i]);		
-		return cipher;
+		int c = 0;
+		int d = 1;
+		String binaryB = Integer.toBinaryString(b);
+		
+		for(int i = 0; i < binaryB.length(); i++)
+		{
+			c = 2 * c;
+			d = (d * d) % n;
+			if(binaryB.charAt(i) == '1')
+			{
+				c++;
+				d = (d * a) % n;
+			}
+		}
+		
+		return d;
+	}
+	
+	/*
+	 * Converts a string of length m <= n, to a string of length n by inserting zeroes at the beginning of str.
+	 */
+	private String toNLengthString(String str, int n)
+	{
+		if(str.length() == n)
+			return str;
+		
+		String zeroes = new String(new char[n - str.length()]).replace("\0", "0");
+		return zeroes + str;
+	}
+	
+		
+	/*
+	 * Encrypts the message.		//Constraint ----        0 < M < p * q
+	 */
+	public String encrypt(String message)
+	{
+		int []cipher = new int[message.length()];
+		String cipherString = "";
+		for(int i = 0; i < message.length(); i++)
+		{
+			cipher[i] = encrypt(message.charAt(i));
+			cipherString += toNLengthString("" + cipher[i], BLOCK_SIZE);
+		}	
+	
+		System.out.println("STRING = " + cipherString);
+		return cipherString;
 	}
 	/*
 	 * Encrypt only an integer
 	 */
 	public int encrypt(int m)
-	{
-		int N = ComputeN();//public key
-		return (int)Math.pow(m, N)%N;
+	{		
+		return modularExponentiator(m, public_key, public_key);
 	}
 	
 	/*
-	 * Decrypt only  the integer.
+	 * Decrypt only  the integer.		//Constraint ----        0 < M < p * q
 	 */
 	public int decrypt(int c)
 	{
-		int value = (int)Math.pow(c, private_key);
-		return CorrectValue(value, p*q);
+		return modularExponentiator(c, private_key, p * q);
 	}
 	
-	public int[] decrypt(int[] cipher)
+	public String decrypt(String cipher)
 	{
-		int [] message = new int[cipher.length];
-		for(int i=0; i<cipher.length; ++i)
+		String plaintext = "";
+		int [] message = new int[cipher.length()];
+		for(int i = 0; i < cipher.length() / BLOCK_SIZE; i++)
 		{
-			message[i] = decrypt(cipher[i]);
+			message[i] = Integer.parseInt(cipher.substring(i * BLOCK_SIZE, i * BLOCK_SIZE + BLOCK_SIZE));
+			message[i] = decrypt(message[i]);
+			plaintext += (char)message[i];
 		}
-		return message;
-	}
+		return plaintext;
+	}	
 	
 	/*
 	 *Display all the details 
 	 */
-	public void Display()
+	public void display()
 	{
 		System.out.println("Algorithm details");
 		System.out.println("p = "+p + " q = "+ q);
 		System.out.println("Public Key is "+public_key);
 		System.out.println("Private Key is "+private_key);
+	}
+	
+	public static void main(String args[]) throws InvalidAlgorithmParameterException
+	{
+		Schmidt_Samoa_Encryptor encryptor = new Schmidt_Samoa_Encryptor();
+		encryptor.display();
+		
+		
+		//Constraint ----        0 < M < (p^2) *q
+		System.out.println("\n\nMessage (Block) Size Limit = p * q = " + encryptor.p * encryptor.q);
+		/*int ciphertext = encryptor.encrypt(210);
+		System.out.println("Encrypt = " + ciphertext);
+		System.out.println("Decrypt = " + encryptor.decrypt(ciphertext));*/
+		
+		System.out.println("\nEncrypting String...");
+		String message = "Jinkchak";
+		String ciphertext = encryptor.encrypt(message);
+		System.out.println("Cipher text = " + ciphertext);
+		String plaintext = encryptor.decrypt(ciphertext);
+		System.out.println("Plaintext = " + plaintext);
 	}
 
 }
