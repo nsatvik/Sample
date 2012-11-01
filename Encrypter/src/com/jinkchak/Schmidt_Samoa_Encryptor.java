@@ -28,16 +28,23 @@ public class Schmidt_Samoa_Encryptor {
 	 */
 	public Schmidt_Samoa_Encryptor()
 	{
-		p = 13;
-		q = 17; // Can use a pool of primes and use a random number generator to select these from the poll.
+		reInitialize(23, 31);	
+	}
+	/*
+	 * Re-init the system with the new p and q
+	 */
+	public void reInitialize(int p, int q)
+	{
+		this.p = p;
+		this.q = q;
 		public_key = computeN();
 		try {
 			private_key = modular_Equation_Solver(public_key, 1, lcm(p-1, q-1));
 		} catch (InvalidAlgorithmParameterException e) {
 			e.printStackTrace();
-		}		
+		}
+		
 	}
-	
 	/*
 	 * Compute and return the value of N = p^2 * q.
 	 */
@@ -194,12 +201,12 @@ public class Schmidt_Samoa_Encryptor {
 	/*
 	 *Display all the details 
 	 */
-	public void display()
+	public String display()
 	{
-		System.out.println("Algorithm details");
-		System.out.println("p = "+p + " q = "+ q);
-		System.out.println("Public Key is "+public_key);
-		System.out.println("Private Key is "+private_key);
+		String message = "Algorithm details \n p = "+p + " q = "+ q + "\nPublic Key is "+public_key+
+				"\nPrivate Key is "+private_key+"\n";
+		System.out.println(message);
+		return message;
 	}
 	
 	public static void main(String args[]) throws InvalidAlgorithmParameterException

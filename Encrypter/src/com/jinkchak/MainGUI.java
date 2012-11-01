@@ -1,8 +1,10 @@
 package com.jinkchak;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
@@ -18,6 +20,7 @@ import org.eclipse.swt.widgets.Text;
 
 public class MainGUI {
 	private Shell shell;
+	private Browser browser;
 	
 	private Text EncryptionTextBox;
 	private Text DecryptionTextBox;
@@ -25,6 +28,11 @@ public class MainGUI {
 	private Button EncDecryptCheck;
 	private Label msgLabel;
 	private Label cipherLabel;
+	private Label AlgoDetailsLabel;
+	
+	private Button changeButton;
+	private Text pTextBox;
+	private Text qTextBox;
 	
 	private Schmidt_Samoa_Encryptor encryptor;
 	
@@ -36,9 +44,9 @@ public class MainGUI {
 		initUI();
 		// shell.pack();
         shell.setLocation(300, 300);
-        shell.setSize(500, 500);
+        shell.setSize(1024, 720);
         shell.setText("Schmidt-Samoa Cryptosystem Demo");
-        shell.setBackgroundImage(new Image(display, "image.jpg"));
+        shell.setBackgroundImage(new Image(display, "white.png"));
         initListeners();
         shell.open();
 
@@ -67,7 +75,36 @@ public class MainGUI {
 			}
 		});
 		
-		
+		AlgoDetailsLabel.addListener(SWT.MouseDown, new Listener() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				AlgoDetailsLabel.setText(encryptor.display());
+				changeButton.setVisible(true);
+				//pTextBox.setVisible(true);qTextBox.setVisible(true);
+				
+			}
+		});
+		changeButton.addListener(SWT.MouseDown, new Listener() {
+			
+			@Override
+			public void handleEvent(Event event) {
+				if(pTextBox.isVisible())
+				{
+					encryptor.reInitialize(Integer.parseInt(pTextBox.getText()),
+							Integer.parseInt(qTextBox.getText()));
+					AlgoDetailsLabel.setText(encryptor.display());
+					pTextBox.setVisible(false);qTextBox.setVisible(false);
+					changeButton.setVisible(false);
+				}
+				else
+				{
+					pTextBox.setVisible(true);qTextBox.setVisible(true);
+					pTextBox.setText("p:");
+					qTextBox.setText("q:");
+				}				
+			}
+		});
 		EncDecryptCheck.addSelectionListener(new SelectionAdapter() {
 			
             @Override
@@ -93,6 +130,52 @@ public class MainGUI {
 	{
         FormLayout layout = new FormLayout();
         shell.setLayout(layout);
+        Label welcomeLabel = new Label(shell,SWT.LEFT);
+        welcomeLabel.setFont(new Font(shell.getDisplay(),"Jokerman",20,SWT.ITALIC));
+        FormData welcomeLabelData = new FormData(20,20);
+        welcomeLabelData.left = new FormAttachment(20);
+        welcomeLabelData.right = new FormAttachment(80);
+        welcomeLabelData.top = new FormAttachment(5);
+        welcomeLabelData.bottom = new FormAttachment(10);
+        welcomeLabel.setText("Schmidt-Samoa Cryptosystem");
+        welcomeLabel.setLayoutData(welcomeLabelData);
+        
+        AlgoDetailsLabel = new Label(shell,SWT.LEFT);
+        FormData linkLabelData = new FormData(20,40);
+        linkLabelData.left = new FormAttachment(80);
+        linkLabelData.right = new FormAttachment(95);
+        linkLabelData.top = new FormAttachment(20);
+        linkLabelData.bottom = new FormAttachment(30);
+        AlgoDetailsLabel.setLayoutData(linkLabelData);
+        AlgoDetailsLabel.setText("View Algorithm Details");
+        
+        changeButton = new Button(shell, SWT.PUSH); changeButton.setText("Change");
+        changeButton.setVisible(false);
+        FormData changeButtonData = new FormData(80, 30);
+        changeButtonData.left = new FormAttachment(80);
+        changeButtonData.right = new FormAttachment(85);
+        changeButtonData.top = new FormAttachment(30);
+        changeButtonData.bottom = new FormAttachment(34);
+        changeButton.setLayoutData(changeButtonData);
+        
+        pTextBox = new Text(shell, SWT.SINGLE  | SWT.BORDER);
+        FormData TextBoxData = new FormData(20, 50);
+        TextBoxData.left = new FormAttachment(80);
+        TextBoxData.right = new FormAttachment(85);
+        TextBoxData.top = new FormAttachment(34);
+        TextBoxData.bottom = new FormAttachment(36);
+        pTextBox.setLayoutData(TextBoxData);
+        pTextBox.setVisible(false);
+
+        qTextBox = new Text(shell, SWT.SINGLE  | SWT.BORDER);
+        TextBoxData = new FormData(20,50);
+        TextBoxData.left = new FormAttachment(80);
+        TextBoxData.right = new FormAttachment(85);
+        TextBoxData.top = new FormAttachment(36);
+        TextBoxData.bottom = new FormAttachment(38);
+        qTextBox.setLayoutData(TextBoxData);
+        qTextBox.setVisible(false);
+
         EncryptionTextBox = new Text(shell, SWT.MULTI | SWT.BORDER);
         FormData EncTextBoxData = new FormData(100, 100);
         EncTextBoxData.left = new FormAttachment(25);
@@ -110,7 +193,6 @@ public class MainGUI {
 	     DecryptionTextBox.setLayoutData(DecTextBoxData);
         
 		EncDecryptCheck = new Button(shell, SWT.CHECK);
-
         EncryptButton = new Button(shell, SWT.PUSH);
         EncryptButton.setText("Encrypt");
         FormData encryptButtonData = new FormData(80, 30);
@@ -148,7 +230,22 @@ public class MainGUI {
         cipherLabel.setLayoutData(cipherLabelData);
         
         Label copyLabel = new Label(shell,SWT.BOLD);
-        copyLabel.setText("© 2012 Code Khsetra Inc.\nAll Rights Reserved.\nwww.facebook.com/code-kshetra");
+        FormData cpyrightData = new FormData(180,100);
+        cpyrightData.left = new FormAttachment(25);
+        cpyrightData.right = new FormAttachment(75);
+        cpyrightData.top = new FormAttachment(90);
+        cpyrightData.bottom = new FormAttachment(95);
+        copyLabel.setLayoutData(cpyrightData);
+        copyLabel.setText("© 2012 Code Khsetra Inc.\nAll Rights Reserved.");
+        
+        browser = new Browser(shell, SWT.None);
+        FormData browData = new FormData(100,100);
+        browData.left = new FormAttachment(0);
+        browData.right = new FormAttachment(25);
+        browData.top = new FormAttachment(20);
+        browData.bottom = new FormAttachment(70);
+        browser.setLayoutData(browData);
+        browser.setUrl("http://en.wikipedia.org/wiki/Schmidt-Samoa_cryptosystem");
         
     }
 	public static void main(String args[])
