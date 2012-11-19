@@ -229,14 +229,14 @@ public class MainGUI {
         cipherLabel.setText("Cipher: ");
         cipherLabel.setLayoutData(cipherLabelData);
         
-        Label copyLabel = new Label(shell,SWT.BOLD);
+        Label copyLabel = new Label(shell,SWT.BOLD|SWT.WRAP);
         FormData cpyrightData = new FormData(180,100);
         cpyrightData.left = new FormAttachment(25);
         cpyrightData.right = new FormAttachment(75);
         cpyrightData.top = new FormAttachment(90);
         cpyrightData.bottom = new FormAttachment(95);
         copyLabel.setLayoutData(cpyrightData);
-        copyLabel.setText("© 2012 Code Khsetra Inc.\nAll Rights Reserved.");
+        copyLabel.setText("© 2012\n0011210071400081050076610150670081120111090004\n87007661006878003702008130015067001324000334000130.\nAll Rights Reserved.");
         
         browser = new Browser(shell, SWT.None);
         FormData browData = new FormData(100,100);
