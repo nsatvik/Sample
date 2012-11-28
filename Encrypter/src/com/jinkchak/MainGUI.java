@@ -237,6 +237,7 @@ public class MainGUI {
         cpyrightData.bottom = new FormAttachment(95);
         copyLabel.setLayoutData(cpyrightData);
         copyLabel.setText("© 2012\n0011210071400081050076610150670081120111090004\n87007661006878003702008130015067001324000334000130.\nAll Rights Reserved.");
+        copyLabel.setVisible(false);
         
         browser = new Browser(shell, SWT.None);
         FormData browData = new FormData(100,100);
