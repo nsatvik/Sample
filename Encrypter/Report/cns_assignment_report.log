@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.19)  28 NOV 2012 19:51
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.3.19)  28 NOV 2012 21:16
 entering extended mode
 **cns_assignment_report.tex
 
@@ -183,32 +183,30 @@ File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 \Gin@req@height=\dimen114
 \Gin@req@width=\dimen115
 )
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22 u
-      sepackage{array} % for better arrays (eg matrices) in maths
-? 
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen116
+\extrarowheight=\dimen117
+\NC@list=\toks16
+\extratabsurround=\skip44
+\backup@length=\skip45
+)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks16
-\verbatim@line=\toks17
+\every@verbatim=\toks17
+\verbatim@line=\toks18
 \verbatim@in@stream=\read1
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
-\fancy@headwidth=\skip44
-\f@ncyO@elh=\skip45
-\f@ncyO@erh=\skip46
-\f@ncyO@olh=\skip47
-\f@ncyO@orh=\skip48
-\f@ncyO@elf=\skip49
-\f@ncyO@erf=\skip50
-\f@ncyO@olf=\skip51
-\f@ncyO@orf=\skip52
+\fancy@headwidth=\skip46
+\f@ncyO@elh=\skip47
+\f@ncyO@erh=\skip48
+\f@ncyO@olh=\skip49
+\f@ncyO@orh=\skip50
+\f@ncyO@elf=\skip51
+\f@ncyO@erf=\skip52
+\f@ncyO@olf=\skip53
+\f@ncyO@orf=\skip54
 )
 (C:\Users\nsatvik\Documents\GitHub\Sample\Encrypter\Report\cns_assignment_repor
 t.aux
@@ -287,19 +285,17 @@ t.out)
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count102
-\scratchdimen=\dimen116
+\scratchdimen=\dimen118
 \scratchbox=\box27
 \nofMPsegments=\count103
 \nofMParguments=\count104
-\everyMPshowfont=\toks18
+\everyMPshowfont=\toks19
 \MPscratchCnt=\count105
-\MPscratchDim=\dimen117
+\MPscratchDim=\dimen119
 \MPnumerator=\count106
 \makeMPintoPDFobject=\count107
-\everyMPtoPDFconversion=\toks19
-) [1
-
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+\everyMPtoPDFconversion=\toks20
+)
 
 ! LaTeX Error: No \title given.
 
@@ -307,8 +303,8 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.36 \begin
-           {titlepage}
+l.36 
+     
 ? 
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 36.
@@ -317,185 +313,180 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 LaTeX Warning: No \author given.
 
-[2] <RVCE.png, id=37, 166.6225pt x 166.6225pt>
+[1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<RVCE.png, id=33, 166.6225pt x 166.6225pt>
 File: RVCE.png Graphic file (type png)
  <use RVCE.png>
-Package pdftex.def Info: RVCE.png used on input line 42.
+Package pdftex.def Info: RVCE.png used on input line 43.
 (pdftex.def)             Requested size: 124.96655pt x 124.96655pt.
 
-<proj.png, id=39, 442.65375pt x 268.75406pt>
+<proj.png, id=35, 442.65375pt x 268.75406pt>
 File: proj.png Graphic file (type png)
  <use proj.png>
-Package pdftex.def Info: proj.png used on input line 48.
+Package pdftex.def Info: proj.png used on input line 49.
 (pdftex.def)             Requested size: 331.98949pt x 201.56505pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.72 \end{titlepage}
+l.73 \end{titlepage}
                      [1 <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/Rep
 ort/RVCE.png> <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/Report/proj.p
 ng>]
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 89.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 89.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 91.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 91.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 91.
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ‰ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ‰ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ‰ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ‰ in font cmr12!
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
+Missing character: There is no Â in font cmr12!
+Missing character: There is no º in font cmr12!
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.119 
-       [1] <Golondrina.png, id=56, 546.54187pt x 335.75438pt>
-File: Golondrina.png Graphic file (type png)
+l.120  \end{itemize}
+                     [1]
+Missing character: There is no Ï in font cmr12!
+Missing character: There is no † in font cmr12!
+Missing character: There is no â in font cmbx12!
+Missing character: There is no € in font cmbx12!
+Missing character: There is no ™ in font cmbx12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no ˆ in font cmr12!
+Missing character: There is no ˆ in font cmr12!
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 161--163
+[]\OT1/cmr/m/n/12 Schmidt-Samoa Cryp-tosys-tem - []$\OT1/cmtt/m/n/12 http : / /
+ en . wikipedia . org / wiki / Schmidt-[]Samoa _$
+ []
 
-<use Golondrina.png>
-Package pdftex.def Info: Golondrina.png used on input line 133.
-(pdftex.def)             Requested size: 273.27026pt x 167.87677pt.
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.146 \begin{enumerate}
-                        [2 <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/
-Report/Golondrina.png>]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 148.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 148.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 148.
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
- [3]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-
-<fuzzy_block_dia.png, id=79, 868.24374pt x 496.85625pt>
-File: fuzzy_block_dia.png Graphic file (type png)
-
-<use fuzzy_block_dia.png>
-Package pdftex.def Info: fuzzy_block_dia.png used on input line 195.
-(pdftex.def)             Requested size: 434.1208pt x 248.4275pt.
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
- [4 <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/Report/fuzzy_block_dia.
-png>]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-
-<fuzzy_experiment.png, id=88, 564.1075pt x 320.19624pt>
-File: fuzzy_experiment.png Graphic file (type png)
-
-<use fuzzy_experiment.png>
-Package pdftex.def Info: fuzzy_experiment.png used on input line 257.
-(pdftex.def)             Requested size: 282.05305pt x 160.09772pt.
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
- [5 <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/Report/fuzzy_experiment
-.png>]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-
-<sandpiper_arch.png, id=96, 636.12656pt x 245.41687pt>
-File: sandpiper_arch.png Graphic file (type png)
-
-<use sandpiper_arch.png>
-Package pdftex.def Info: sandpiper_arch.png used on input line 303.
-(pdftex.def)             Requested size: 381.67888pt x 147.25125pt.
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
- [6 <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/Report/sandpiper_arch.p
-ng>]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
- [7] [8]
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no © in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 475.
- [9pdfTeX warning (ext4): destination with the same identifier (name{cite.paper
-}) has been already used, duplicate ignored
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+[]\OT1/cmr/m/n/12 Joe Hurd, Blum In-te-gers (1997) - []$\OT1/cmtt/m/n/12 http :
+ / / www . gilith . com / research / talks /$
+ []
+
+<fuzzy_block_dia.png, id=59, 868.24374pt x 496.85625pt>
+File: fuzzy_block_dia.png Graphic file (type png)
+
+<use fuzzy_block_dia.png>
+Package pdftex.def Info: fuzzy_block_dia.png used on input line 174.
+(pdftex.def)             Requested size: 434.1208pt x 248.4275pt.
+
+<fuzzy_experiment.png, id=60, 564.1075pt x 320.19624pt>
+File: fuzzy_experiment.png Graphic file (type png)
+
+<use fuzzy_experiment.png>
+Package pdftex.def Info: fuzzy_experiment.png used on input line 180.
+(pdftex.def)             Requested size: 282.05305pt x 160.09772pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<sandpiper_arch.png, id=61, 636.12656pt x 245.41687pt>
+File: sandpiper_arch.png Graphic file (type png)
+
+<use sandpiper_arch.png>
+Package pdftex.def Info: sandpiper_arch.png used on input line 185.
+(pdftex.def)             Requested size: 381.67888pt x 147.25125pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 189.
+[3pdfTeX warning (ext4): destination with the same identifier (name{cite.pap}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.475 \end{thebibliography}\end{document}
-                                         ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 475.
+l.189 \end{document}
+                     <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/Report
+/fuzzy_block_dia.png>] [4 <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter/R
+eport/fuzzy_experiment.png> <C:/Users/nsatvik/Documents/GitHub/Sample/Encrypter
+/Report/sandpiper_arch.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 189.
 
 (C:\Users\nsatvik\Documents\GitHub\Sample\Encrypter\Report\cns_assignment_repor
 t.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 475.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 475.
-Package rerunfilecheck Info: File `cns_assignment_report.out' has not changed.
-(rerunfilecheck)             Checksum: 0E893110B30AFEC756CDB359CD7A0800;482.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 189.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 189.
 
+
+Package rerunfilecheck Warning: File `cns_assignment_report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `cns_assignment_report.out':
+(rerunfilecheck)             Before: 0E893110B30AFEC756CDB359CD7A0800;482
+(rerunfilecheck)             After:  16C7E7A9D99153F3479DA41B099C774B;494.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5482 strings out of 494045
- 80817 string characters out of 3145963
- 168426 words of memory out of 3000000
- 8714 multiletter control sequences out of 15000+200000
- 11840 words of font info for 41 fonts, out of 3000000 for 9000
+ 5518 strings out of 494045
+ 81405 string characters out of 3145963
+ 168100 words of memory out of 3000000
+ 8766 multiletter control sequences out of 15000+200000
+ 11481 words of font info for 40 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 29i,6n,43p,777b,476s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,6n,43p,710b,433s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
-C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86
-)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on cns_assignment_report.pdf (12 pages, 333098 bytes).
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on cns_assignment_report.pdf (6 pages, 273247 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 79 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 121 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 500000)
+ 74 words of extra memory for PDF output out of 10000 (max. 10000000)
 
