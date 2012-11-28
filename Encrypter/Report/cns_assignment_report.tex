@@ -124,18 +124,18 @@ RSA stands for Ron Rivest, Adi Shamir and Leonard Adleman, who first publicly de
 \begin{itemize}
 \item{\textbf{Key Generation}}
 \begin{itemize}
-\item{}Let N = pq be a product of two prime numbers
-\item{}Compute $φ(n) = (p – 1)(q – 1)$, where φ is Euler's totient function.
-\item{}Choose an integer e such that 1 < e < φ(n) and greatest common divisor of (e, φ(n)) = 1; i.e., e and φ(n) are coprime.
-\item{}Determine d as: d º e-1 (mod φ(n)) i.e., d is the multiplicative inverse of e mod φ(n).
+\item{}Let N = $p\times q$ be a product of two prime numbers
+\item{}Compute $\varphi(n) = (p – 1)(q – 1)$, where $\varphi$ is Euler's totient function.
+\item{}Choose an integer e such that $1 \leq e \leq \varphi(n)$ and greatest common divisor of (e, $\varphi(n)$) = 1; i.e., e and $\varphi(n)$ are co-prime.
+\item{}Determine d as: d = $e^{-1}$ (mod $\varphi(n)$), d is the multiplicative inverse of e mod $\varphi(n)$.
  \end{itemize}
 
 \item{\textbf{Encryption}}:    Let M be a message, and c the ciphertext. Then,
         	$c = m^e (mod n)$
 \item{\textbf{Decryption}}:  $m = c^d (mod n)$
-By construction, d*e= 1 mod φ(n). The public key consists of the modulus n and the public (or encryption) exponent e. The private key consists of the modulus n and the private (or decryption) exponent d which must be kept secret.
+By construction, $d^e= 1$ mod $\varphi(n)$. The public key consists of the modulus n and the public (or encryption) exponent e. The private key consists of the modulus n and the private (or decryption) exponent d which must be kept secret.
 \end{itemize}
-\subsection{Rabin’s Cryptosystem}
+\subsection{Rabin\'s Cryptosystem}
 In 1979, Michael Rabin suggested a variant of RSA with public-key exponent 2, which he showed to be as secure as factoring.
 \begin{itemize}
 \item{\textbf{Key Generation}}
