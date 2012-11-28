@@ -53,7 +53,7 @@ public class MainGUI {
         shell.setLocation(300, 300);
         shell.setSize(1024, 720);
         shell.setText("Schmidt-Samoa Cryptosystem Demo");
-        shell.setBackgroundImage(new Image(display, "white.png"));
+        shell.setBackgroundImage(new Image(display, "matrix.jpg"));
         initListeners();
         shell.open();
 
@@ -191,7 +191,7 @@ public class MainGUI {
         qTextBox.setLayoutData(TextBoxData);
         qTextBox.setVisible(false);
 
-        EncryptionTextBox = new Text(shell, SWT.MULTI | SWT.BORDER);
+        EncryptionTextBox = new Text(shell, SWT.MULTI | SWT.BORDER | SWT.WRAP);
         FormData EncTextBoxData = new FormData(100, 100);
         EncTextBoxData.left = new FormAttachment(25);
         EncTextBoxData.right = new FormAttachment(75);
@@ -199,7 +199,7 @@ public class MainGUI {
         EncTextBoxData.bottom = new FormAttachment(40);
         EncryptionTextBox.setLayoutData(EncTextBoxData);
         
-		DecryptionTextBox = new Text(shell, SWT.MULTI | SWT.BORDER);
+		DecryptionTextBox = new Text(shell, SWT.MULTI | SWT.BORDER | SWT.WRAP);
 		 FormData DecTextBoxData = new FormData(100, 100);
 		 DecTextBoxData.left = new FormAttachment(25);
 		 DecTextBoxData.right = new FormAttachment(75);
