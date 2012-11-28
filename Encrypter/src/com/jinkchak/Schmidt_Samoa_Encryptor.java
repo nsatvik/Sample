@@ -5,17 +5,13 @@ import java.security.InvalidAlgorithmParameterException;
 import org.eclipse.swt.widgets.Display;
 
 /**
-Schmidt-Samoa Cryptosystem
-Key generation
-•	Choose two large distinct primes p and q and compute N = p2q 
-•	Compute d = N^-1 mod lcm(p – 1, q – 1)
-•	Now N is the public key and d is the private key.
-
-Encryption
-To encrypt a message m we compute the cipher text as c = m^N mod N
-
-Decryption
-To decrypt a cipher text c we compute the plaintext as m = c^d mod pq which like for Rabin and RSA can be computed with the Chinese remainder theorem.
+ * Schmidt-Samoa Cryptosystem
+ * Key generation
+ * •	Choose two large distinct primes p and q and compute N = p2q
+ * •	Compute d = N^-1 mod lcm(p – 1, q – 1)
+ * •	Now N is the public key and d is the private key.
+ * Encryption: To encrypt a message m we compute the cipher text as c = m^N mod N
+ * Decryption: To decrypt a cipher text c we compute the plaintext as m = c^d mod pq which like for Rabin and RSA can be computed with the Chinese remainder theorem.
 */
 public class Schmidt_Samoa_Encryptor {
 	private int p, q;
@@ -23,15 +19,23 @@ public class Schmidt_Samoa_Encryptor {
 	
 	private static final int BLOCK_SIZE = 6;			//For splitting a String of text into blocks
 	
-	/*
-	 * This constructor initializes p,q and other variables.
+	/**
+	 * This constructor initializes the following variables:
+	 * 		p - with a default value of 23
+	 * 		q - with a default value of 31
+	 * After that, it calls a method that computes the private and public keys
+	 * 
 	 */
 	public Schmidt_Samoa_Encryptor()
 	{
 		reInitialize(23, 31);	
 	}
-	/*
-	 * Re-init the system with the new p and q
+	
+	/**
+	 * Re-initializes the system with the new values for p and q, and then computes the new values of the public and private keys.
+	 * @param p A large prime number
+	 * @param q A large prime number that is distinct from q 
+	 * 
 	 */
 	public void reInitialize(int p, int q)
 	{
@@ -45,23 +49,32 @@ public class Schmidt_Samoa_Encryptor {
 		}
 		
 	}
-	/*
-	 * Compute and return the value of N = p^2 * q.
+	
+	/**
+	 * Computes the value of N
+	 * @return the value (p^2 * q)
 	 */
 	private int computeN()
 	{
 		return p*p*q;
 	}
-	/*
-	 * Compute the lcm of a and b
+	
+	/**
+	 * Computes the lcm of two integers
+	 * @param a An integer
+	 * @param b An integer
+	 * @return LCM of a and b
 	 */
 	private int lcm(int a, int b)
 	{
 		return (a*b)/gcd(a,b);
 	}
 	
-	/*
-	 * Compute the gcd of a and b.
+	/**
+	 * Computes the GCD of two integers
+	 * @param a An integer
+	 * @param b An integer
+	 * @return GCD of a and b
 	 */
 	private int gcd(int a, int b) {
 		if (b==0)
@@ -69,8 +82,17 @@ public class Schmidt_Samoa_Encryptor {
 		return gcd(b,a%b);
 	}
 	
-	/*
-	 * Extended euclid's algorithm
+	/**This method contains an implementation of the extended Euclidean algorithm.
+	 * The extended Euclidean algorithm is an extension to the Euclidean algorithm. 
+	 * Besides finding the greatest common divisor of two integers, as the Euclidean algorithm does, 
+	 * it also finds integers x and y (one of which is typically negative) that satisfy Bézout's identity:
+	 * 			ax + by = gcd(a, b)
+	 * @param a An integer
+	 * @param b An integer
+	 * @return An integer array z consisting of three element:
+	 * 			z[0] = gcd(a, b)
+	 * 			z[1] = x
+	 * 			z[2] = y
 	 */
 	private int[] extendedEuclidsAlgo(int a, int b)
 	{
@@ -90,8 +112,14 @@ public class Schmidt_Samoa_Encryptor {
 		return final_result;
 	}
 	
-	/*
-	 * Modular Equation solver.
+	/**
+	 * This method contains an implementation of the Modular Equation solver as defined in the CLRS text book.
+	 * It finds x in the modular equation: ax = b mod n.
+	 * This method returns only the first value of x
+	 * @param a An Integer
+	 * @param b An Integer
+	 * @param n An Integer
+	 * @return The first value of x that satisfies the modular equation
 	 */
 	private int modular_Equation_Solver(int a, int b, int n) throws InvalidAlgorithmParameterException
 	{		
@@ -109,6 +137,13 @@ public class Schmidt_Samoa_Encryptor {
 			throw new InvalidAlgorithmParameterException();
 	}
 	
+	/**
+	 * This method is used by the modular_Equation_Solver method to convert a negative result to a positive one.
+	 * All operations are performed with mod n.
+	 * @param value An Integer that has to be converted to a positive integer mod n, if it is not already positive
+	 * @param n An Integer based on which value is converted to a positive integer
+	 * @return value, after it has been converted to a positive integer
+	 */
 	private int correctValue(int value, int n) {
 		while(value<0)
 		{
@@ -119,7 +154,14 @@ public class Schmidt_Samoa_Encryptor {
 		return value%n;
 	}
 	
-	
+	/**
+	 * This method implements the modular exponentiation algorithm as defined in the CLRS text book.
+	 * It finds out the result of (a^b) mod n, even when b is very very large
+	 * @param a An integer that has to be raised to the power b
+	 * @param b An integer that denotes the power to which a has to be raised.
+	 * @param n An integer based on which all multiplication operations are performed (mod n)
+	 * @return An integer containing the result of ((a ^ b) mod n)
+	 */
 	public int modularExponentiator(int a, int b, int n)
 	{
 		int c = 0;
@@ -140,8 +182,11 @@ public class Schmidt_Samoa_Encryptor {
 		return d;
 	}
 	
-	/*
+	/**
 	 * Converts a string of length m <= n, to a string of length n by inserting zeroes at the beginning of str.
+	 * @param str A string consisting of at most n characters
+	 * @param n An integer, denoting the total number of characters that str should contain
+	 * @return A string containing the value of str with a length of n characters
 	 */
 	private String toNLengthString(String str, int n)
 	{
@@ -153,8 +198,12 @@ public class Schmidt_Samoa_Encryptor {
 	}
 	
 		
-	/*
-	 * Encrypts the message.		//Constraint ----        0 < M < p * q
+	/**
+	 * Encrypts a message using the Schmidt-Samoa Algorithm. The message is split into blocks of size
+	 * BLOCK_SIZE and each block is encrypted to form a cipher string. If a given block is less than the 
+	 * BLOCK_SIZE, then the toNLengthString() method is called to convert the block to a string of size BLOCK_SIZE.
+	 * @param message A string of plaintext.
+	 * @return A string containing the cipher text
 	 */
 	public String encrypt(String message)
 	{
@@ -169,22 +218,33 @@ public class Schmidt_Samoa_Encryptor {
 		System.out.println("STRING = " + cipherString);
 		return cipherString;
 	}
-	/*
-	 * Encrypt only an integer
+	
+	/**
+	 * This method encrypts only an integer. It is used by the encrypt(String) method on each block of the plaintext	 * 
+	 * @param m An integer that has to be encrypted
+	 * @return An integer containing an encrypted version of m, i.e., ((m ^ public_key) mod (public_key))
 	 */
 	public int encrypt(int m)
 	{		
 		return modularExponentiator(m, public_key, public_key);
 	}
 	
-	/*
-	 * Decrypt only  the integer.		//Constraint ----        0 < M < p * q
+	/**
+	 * This method decrypts only  an integer. It is used by the decrypt(String) method on each block of the ciphertext.	
+	 * @param c An integer that has to be decrypted. It should satisfy the constraint ---- 0 < M < (p * q)
+	 * @return An integer containing the decrypted version of c, i.e., ((c ^ private_key) mod(p * q))
 	 */
 	public int decrypt(int c)
 	{
 		return modularExponentiator(c, private_key, p * q);
 	}
 	
+	/**
+	 * Decrypts a message using the Schmidt-Samoa Algorithm. The message is split into blocks of size
+	 * BLOCK_SIZE and each block is decrypted to form a plaintext string. 
+	 * @param message A string of cipher text.
+	 * @return A string containing the plain text
+	 */
 	public String decrypt(String cipher)
 	{
 		String plaintext = "";
@@ -198,8 +258,13 @@ public class Schmidt_Samoa_Encryptor {
 		return plaintext;
 	}	
 	
-	/*
-	 *Display all the details 
+	/**
+	 * Displays all details of the following values:
+	 * 		p
+	 * 		q 
+	 * 		Public Key
+	 * 		Private Key
+	 * @return A string containing these values
 	 */
 	public String display()
 	{
@@ -209,6 +274,10 @@ public class Schmidt_Samoa_Encryptor {
 		return message;
 	}
 	
+	/**
+	 * A main method, for testing the application in the console. 
+	 * @throws InvalidAlgorithmParameterException
+	 */
 	public static void main(String args[]) throws InvalidAlgorithmParameterException
 	{
 		Schmidt_Samoa_Encryptor encryptor = new Schmidt_Samoa_Encryptor();

@@ -17,7 +17,9 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-
+/**
+ * This class constructs the GUI of our application, using the classes provided by the SWT.
+ */
 public class MainGUI {
 	private Shell shell;
 	private Browser browser;
@@ -36,6 +38,11 @@ public class MainGUI {
 	
 	private Schmidt_Samoa_Encryptor encryptor;
 	
+	/**
+	 * This constructor initializes the GUI variables and event loop, and creates a new shell for the Display object passed
+	 * to it as a parameter. It also initializes an object of the Schmidt_Samoa_Encryptor class. 
+	 * @param display A Display object
+	 */
 	public MainGUI(Display display)
 	{
 		encryptor = new Schmidt_Samoa_Encryptor();
@@ -56,6 +63,11 @@ public class MainGUI {
           }
         }
 	}
+	
+	/**
+	 * This method initializes all the event handlers of the widgets in the GUI. These event handlers make use
+	 * of a Schmidt_Samoa_Encryptor object to encrypt and decrypt messages entered by the user. 
+	 */
 	private void initListeners() {
 		EncryptButton.addListener(SWT.MouseDown, new Listener() {
 			
@@ -126,6 +138,9 @@ public class MainGUI {
         });		
 	}
 	
+	/**
+	 * This method initializes the form layout of the GUI, and initializes the values and location of each widget in the GUI.
+	 */
 	public void initUI() 
 	{
         FormLayout layout = new FormLayout();
@@ -249,6 +264,10 @@ public class MainGUI {
         browser.setUrl("http://en.wikipedia.org/wiki/Schmidt-Samoa_cryptosystem");
         
     }
+	
+	/**
+	 * The main method, that creates a display object and creates a MainGUI object.
+	 */
 	public static void main(String args[])
 	{
 			Display display = new Display();
