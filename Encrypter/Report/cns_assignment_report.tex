@@ -14,9 +14,19 @@
 %%% PAGE DIMENSIONS
 \usepackage{makeidx}
 \usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
 \usepackage[margin=0.75in]{geometry} % to change the page dimensions
 \geometry{a4paper} % or letterpaper (US) or a5paper or....
-
+\lstset{
+language=Java,
+basicstyle=\small\sffamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false
+}
 \usepackage[pdftex]{graphicx} % support the \includegraphics command and options
 
 \usepackage{array} % for better arrays (eg matrices) in maths
@@ -58,8 +68,9 @@
 \begin{minipage}{0.8\textwidth}
 \begin{flushleft} \large
 \emph{By:}\\
+Samir \textsc{Sheriff} [1RV09CS093]\\
 Satvik \textsc{N} [1RV09CS095]\\
-Vaishakh \textsc{BN} [1RV09CS114]\\
+
 
 \end{flushleft}
 \end{minipage}
@@ -126,34 +137,48 @@ By construction, d*e= 1 mod φ(n). The public key consists of the modulus n and 
 \end{itemize}
 \subsection{Rabin’s Cryptosystem}
 In 1979, Michael Rabin suggested a variant of RSA with public-key exponent 2, which he showed to be as secure as factoring.
-Let N = pq be a product of two prime numbers.
-Encryption. Let m∈   ZNx, M be a message, the encryption is
-C = m2 mod N
-Decryption. To decrypt we solve the equation
-x2 = C mod N
-which has four roots in ZNx
+\begin{itemize}
+\item{\textbf{Key Generation}}
+\begin{itemize}
+\item{}Choose two large distinct primes p and q.
+\item{}Let n=pq. Then n is the public key. The primes p and q are the private key
+ \end{itemize}
 
+\item{\textbf{Encryption}}:  For the encryption, only the public key n is used. The process follows -
+Let  P = \{0,...,n-1\} be the plaintext space (consisting of numbers) and $m \in P$ be the plaintext. Now the ciphertext  is determined by $c = m^2 $(mod n).
+
+
+c is the quadratic remainder of the square of the plaintext, modulo the key-number n.
+\item{\textbf{Decryption}}:
+To decode the ciphertext, the private keys are necessary. The process follows:
+If c and r are known, the plaintext is then $m \in \{0,$...,$n-1$\} with $m^2=c$ (mod r). For a composite r (that is, like the Rabin algorithm's ) there is no efficient method known for the finding of m. If, however r is prime (as are p and q in the Rabin algorithm), the Chinese remainder theorem can be applied to solve for m.
+
+Thus the square roots
+$ m_p = \sqrt{c}$ mod p
+and
+$ m_q = \sqrt{c}$ mod q must be calculated
+\end{itemize}
 
 
 \section{Implementation}
-
-\begin{figure}[h!]
-  \centering
-   \includegraphics[scale=1.0]{schmidt_field.png}
-  \caption{Experimental Results}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-   \includegraphics[scale=1.0]{computeN.png}
-  \caption{Experimental Results}
-\end{figure}
-
-\begin{figure}[h!]
-  \centering
-   \includegraphics[scale=1.0]{correctValue.png}
-  \caption{Experimental Results}
-\end{figure}
+\lstinputlisting[language=Java]{Schmidt_Samoa_Encryptor.java}
+%\begin{figure}[h!]
+%  \centering
+%   \includegraphics[scale=1.0]{schmidt_field.png}
+%  \caption{Experimental Results}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%  \centering
+%   \includegraphics[scale=1.0]{computeN.png}
+%  \caption{Experimental Results}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%  \centering
+%   \includegraphics[scale=1.0]{correctValue.png}
+%  \caption{Experimental Results}
+%\end{figure}
 
 
 
@@ -164,8 +189,6 @@ which has four roots in ZNx
 %developed using an IBM Informix ORDBMS.}
 %\end{figure}
 
-
-\newpage
 
 \begin{thebibliography}{9}
 \bibitem{pap}
@@ -183,22 +206,19 @@ Katja Schmidt-Samoa,
 
 \bibitem{link}Katja Schmidt-Samoa - \emph{Contributions to Provable Security and Efficient Cryptography}.\\\url{http://tuprints.ulb.tu-darmstadt.de/708/1/Diss.Schmidt-Samoa.pdf}
 \end{thebibliography}
+\newpage
 \section{Screenshots}
 \begin{figure}[h!]
   \centering
-   \includegraphics[scale=0.50]{fuzzy_block_dia.png}
-  \caption{Resource management based on fuzzy logic systems.}
+   \includegraphics[scale=0.50]{encrypt.png}
+  \caption{Encryption using the Schmidt-Samoa algorithm}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[scale=0.50]{fuzzy_experiment.png}
-  \caption{Experimental Results}
+   \includegraphics[scale=0.50]{decrypt.png}
+  \caption{Decryption using the Schmidt-Samoa algorithm.}
 \end{figure}
-\begin{figure}[h!]
-  \centering
-   \includegraphics[scale=0.60]{sandpiper_arch.png}
-  \caption{The Sandpiper architecture.}
-\end{figure}
+
 
 \end{document}
